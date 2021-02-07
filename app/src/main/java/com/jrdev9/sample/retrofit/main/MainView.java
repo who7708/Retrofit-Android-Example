@@ -55,7 +55,7 @@ public class MainView {
     }
 
     public void showUsers(UsersAdapter usersAdapter) {
-        usersRecyclerList.setLayoutManager(new LinearLayoutManager(usersRecyclerList.getContext()));
+        usersRecyclerList.setLayoutManager(new LinearLayoutManager(usersRecyclerList.getContext(), RecyclerView.VERTICAL, false));
         usersRecyclerList.setAdapter(usersAdapter);
     }
 

@@ -11,6 +11,7 @@ import com.jrdev9.sample.retrofit.service.GitHubService;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -83,18 +84,27 @@ public class MainPresenter implements MainView.OnMainViewActions {
         }
     }
 
+    /**
+     * 此版本以下才可以在主线程上使用同步请求
+     */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onShowFollowers(String nick) {
         GitHubService service = getRestAdapter().create(GitHubService.class);
-        List<User> users;
+        List<User> users = new ArrayList<>();
         try {
             users = service.getFollowersByUser(nick);
         } catch (Exception e) {
-            showMessageToast(e.getMessage());
+            // showMessageToast(e.getMessage());
             showMessageToast("Synchronous requests can be the reason " +
                     "of app crashes on Android greater or equal than 4.0");
         }
+        if (usersAdapter == null) {
+            usersAdapter = new UsersAdapter(users);
+        } else {
+            usersAdapter.showUsers(users);
+        }
+        mainView.showUsers(usersAdapter);
     }
 
     @Override

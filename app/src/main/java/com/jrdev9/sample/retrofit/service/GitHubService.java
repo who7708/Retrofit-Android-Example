@@ -12,16 +12,16 @@ import rx.Observable;
 
 public interface GitHubService {
 
-    /* Request asynchronous with header annotation */
+    /** Request asynchronous with header annotation */
     @Headers("Cache-Control: max-age=640000")
     @GET("/users/{user}")
     void getInfoUser(@Path("user") String user, Callback<User> infoUserCallback);
 
-    /* Request synchronous */
+    /** Request synchronous */
     @GET("/users/{user}/followers")
     List<User> getFollowersByUser(@Path("user") String user);
 
-    /* Request observable */
+    /** Request observable */
     @GET("/users/{user}/following")
     Observable<List<User>> getFollowingsByUser(@Path("user") String user);
 }
