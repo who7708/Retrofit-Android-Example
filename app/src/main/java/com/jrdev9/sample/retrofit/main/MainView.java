@@ -28,7 +28,7 @@ public class MainView {
     @BindView(R.id.users_list)
     RecyclerView usersRecyclerList;
 
-    private OnMainViewActions onMainViewActions;
+    private final OnMainViewActions onMainViewActions;
 
     public MainView(WeakReference<MainActivity> mainActivityWeakReference, OnMainViewActions onMainViewActions) {
         ButterKnife.bind(this, mainActivityWeakReference.get());

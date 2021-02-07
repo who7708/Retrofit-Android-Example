@@ -25,9 +25,9 @@ import rx.schedulers.Schedulers;
 
 public class MainPresenter implements MainView.OnMainViewActions {
 
-    private WeakReference<MainActivity> mainActivityWeakReference;
-    private MainView mainView;
-    private RestAdapter restAdapter;
+    private final WeakReference<MainActivity> mainActivityWeakReference;
+    private final MainView mainView;
+    private final RestAdapter restAdapter;
     private UsersAdapter usersAdapter;
 
     public MainPresenter(MainActivity mainActivity) {
@@ -99,7 +99,6 @@ public class MainPresenter implements MainView.OnMainViewActions {
 
     @Override
     public void onShowFollowings(String nick) {
-
 
         GitHubService service = getRestAdapter().create(GitHubService.class);
         service.getFollowingsByUser(nick)

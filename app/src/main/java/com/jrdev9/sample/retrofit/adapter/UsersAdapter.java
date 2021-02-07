@@ -88,13 +88,13 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             }
 
             if (user.getFollowers() > 0) {
-                followersNumberText.setText("Followers: " + String.valueOf(user.getFollowers()));
+                followersNumberText.setText("Followers: " + user.getFollowers());
             } else {
                 followersNumberText.setVisibility(View.GONE);
             }
 
             if (user.getFollowing() > 0) {
-                followingNumberText.setText("Following: " + String.valueOf(user.getFollowing()));
+                followingNumberText.setText("Following: " + user.getFollowing());
             } else {
                 followingNumberText.setVisibility(View.GONE);
             }
