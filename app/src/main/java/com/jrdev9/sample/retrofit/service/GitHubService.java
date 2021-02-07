@@ -19,7 +19,7 @@ public interface GitHubService {
 
     /** Request synchronous */
     @GET("/users/{user}/followers")
-    List<User> getFollowersByUser(@Path("user") String user);
+    Observable<List<User>> getFollowersByUser(@Path("user") String user);
 
     /** Request observable */
     @GET("/users/{user}/following")

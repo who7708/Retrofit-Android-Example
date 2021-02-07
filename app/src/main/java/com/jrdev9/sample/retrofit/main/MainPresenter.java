@@ -1,7 +1,5 @@
 package com.jrdev9.sample.retrofit.main;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -11,7 +9,6 @@ import com.jrdev9.sample.retrofit.service.GitHubService;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -87,29 +84,38 @@ public class MainPresenter implements MainView.OnMainViewActions {
     /**
      * 此版本以下才可以在主线程上使用同步请求
      */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    // @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onShowFollowers(String nick) {
         GitHubService service = getRestAdapter().create(GitHubService.class);
-        List<User> users = new ArrayList<>();
-        try {
-            users = service.getFollowersByUser(nick);
-        } catch (Exception e) {
-            // showMessageToast(e.getMessage());
-            showMessageToast("Synchronous requests can be the reason " +
-                    "of app crashes on Android greater or equal than 4.0");
-        }
-        if (usersAdapter == null) {
-            usersAdapter = new UsersAdapter(users);
-        } else {
-            usersAdapter.showUsers(users);
-        }
-        mainView.showUsers(usersAdapter);
+        service.getFollowersByUser(nick)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<List<User>>() {
+                    @Override
+                    public void onCompleted() {
+                        //Do not nothing
+                    }
+
+                    @Override
+                    public void onError(Throwable error) {
+                        showMessageToast(error.getMessage());
+                    }
+
+                    @Override
+                    public void onNext(List<User> users) {
+                        if (usersAdapter == null) {
+                            usersAdapter = new UsersAdapter(users);
+                        } else {
+                            usersAdapter.showUsers(users);
+                        }
+                        mainView.showUsers(usersAdapter);
+                    }
+                });
     }
 
     @Override
     public void onShowFollowings(String nick) {
-
         GitHubService service = getRestAdapter().create(GitHubService.class);
         service.getFollowingsByUser(nick)
                 .subscribeOn(Schedulers.newThread())
