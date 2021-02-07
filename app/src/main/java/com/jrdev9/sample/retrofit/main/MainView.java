@@ -1,30 +1,31 @@
 package com.jrdev9.sample.retrofit.main;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.jrdev9.sample.retrofit.R;
 import com.jrdev9.sample.retrofit.adapter.UsersAdapter;
 
 import java.lang.ref.WeakReference;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainView {
 
-    @Bind(R.id.user_edit_text)
+    @BindView(R.id.user_edit_text)
     EditText userEditText;
-    @Bind(R.id.info_button)
+    @BindView(R.id.info_button)
     Button showInfoButton;
-    @Bind(R.id.followers_button)
+    @BindView(R.id.followers_button)
     Button showFollowersButton;
-    @Bind(R.id.followings_button)
+    @BindView(R.id.followings_button)
     Button showFollowingsButton;
-    @Bind(R.id.users_list)
+    @BindView(R.id.users_list)
     RecyclerView usersRecyclerList;
 
     private OnMainViewActions onMainViewActions;

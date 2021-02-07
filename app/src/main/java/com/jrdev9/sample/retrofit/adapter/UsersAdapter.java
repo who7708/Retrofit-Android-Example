@@ -1,11 +1,12 @@
 package com.jrdev9.sample.retrofit.adapter;
 
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.jrdev9.sample.retrofit.R;
 import com.jrdev9.sample.retrofit.model.User;
@@ -13,7 +14,7 @@ import com.jrdev9.sample.retrofit.model.User;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -60,15 +61,15 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     public class UserHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.id_text)
+        @BindView(R.id.id_text)
         TextView idText;
-        @Bind(R.id.nick_text)
+        @BindView(R.id.nick_text)
         TextView nickText;
-        @Bind(R.id.name_text)
+        @BindView(R.id.name_text)
         TextView nameText;
-        @Bind(R.id.following_number_text)
+        @BindView(R.id.following_number_text)
         TextView followingNumberText;
-        @Bind(R.id.followers_number_text)
+        @BindView(R.id.followers_number_text)
         TextView followersNumberText;
 
         public UserHolder(View itemView) {

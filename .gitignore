@@ -65,13 +65,11 @@ com_crashlytics_export_strings.xml
 *.pydevproject
 .metadata
 .gradle
-bin/
 tmp/
 *.tmp
 *.bak
 *.swp
 *~.nib
-local.properties
 .settings/
 .loadpath
 
@@ -93,10 +91,6 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
-
-### Gradle ###
-.gradle
-build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -161,3 +155,5 @@ $RECYCLE.BIN/
 
 crashlytics-build.properties
 app/src/main/assets/crashlytics-build.properties
+
+Retrofit-Android-Example.zip
