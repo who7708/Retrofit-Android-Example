@@ -1,7 +1,8 @@
 package com.jrdev9.sample.retrofit.main;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +14,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new MainPresenter(this);
+    }
+
+    public void retrofit1Click(View view) {
+        Intent intent = new Intent(this, MVPWithRetrofit1Activity.class);
+        startActivity(intent);
+    }
+
+    public void retrofit2Click(View view) {
+        Intent intent = new Intent(this, MVPWithRetrofit2Activity.class);
+        startActivity(intent);
+    }
+
+    public void rxjavaClick(View view) {
+        Intent intent = new Intent(this, MVPWithRxjavaActivity.class);
+        startActivity(intent);
+    }
+
+    public void dataBindingClick(View view) {
+        Intent intent = new Intent(this, DataBindingActivity.class);
+        startActivity(intent);
     }
 }
