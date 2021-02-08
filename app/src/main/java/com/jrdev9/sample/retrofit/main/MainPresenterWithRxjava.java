@@ -10,7 +10,9 @@ import com.squareup.okhttp.OkHttpClient;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 import retrofit.client.OkClient;
@@ -135,16 +137,32 @@ public class MainPresenterWithRxjava implements MainView.OnMainViewActions {
     }
 
     private RestAdapter getRestAdapter() {
-        return restAdapter != null ? restAdapter :
-                new RestAdapter.Builder()
-                        .setEndpoint("https://api.github.com")
-                        .setClient(new OkClient(new OkHttpClient()))
-                        .setRequestInterceptor(new RequestInterceptor() {
-                            @Override
-                            public void intercept(RequestFacade request) {
-                                request.addHeader("User-Agent", "Retrofit-Sample-App");
-                            }
-                        })
-                        .setLogLevel(RestAdapter.LogLevel.FULL).build();
+        if (restAdapter != null) {
+            return restAdapter;
+        }
+        //声明日志类
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        //设定日志级别
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        //自定义OkHttpClient
+        //初始化okhttp
+        final okhttp3.OkHttpClient client = new okhttp3.OkHttpClient().newBuilder()
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
+                //添加拦截器
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
+        return new RestAdapter.Builder()
+                .setEndpoint("https://api.github.com")
+                .setClient(new OkClient(new OkHttpClient()))
+                .setRequestInterceptor(new RequestInterceptor() {
+                    @Override
+                    public void intercept(RequestFacade request) {
+                        request.addHeader("User-Agent", "Retrofit-Sample-App");
+                    }
+                })
+                .setLogLevel(RestAdapter.LogLevel.FULL).build();
     }
 }
