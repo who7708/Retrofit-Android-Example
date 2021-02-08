@@ -10,4 +10,8 @@
     <string name="async_info">(ASYNC) INFO</string>
     <string name="user_nick_hint">User nick</string>
     <string name="click_to_load">点击加载</string>
+    <string name="retrofit1">Retrofit1</string>
+    <string name="retrofit2">Retrofit2</string>
+    <string name="rxjava">Rxjava</string>
+    <string name="data_binding">DataBinding</string>
 </resources>
