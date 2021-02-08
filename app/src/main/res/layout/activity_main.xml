@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,60 +9,39 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".main.MainActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/user_text_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/user_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/user_nick_hint"
-            android:inputType="text"
-            android:text="@string/default_name" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.percentlayout.widget.PercentRelativeLayout
+    <Button
+        android:id="@+id/retrofit1_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:onClick="retrofit1Click"
+        android:text="@string/retrofit1"
+        android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/info_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:text="@string/async_info"
-            android:textSize="12sp"
-            app:layout_widthPercent="33%" />
-
-        <Button
-            android:id="@+id/followers_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/sync_followers"
-            android:textSize="12sp"
-            app:layout_widthPercent="33%" />
-
-        <Button
-            android:id="@+id/followings_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:text="@string/observable_following"
-            android:textSize="12sp"
-            app:layout_widthPercent="33%" />
-    </androidx.percentlayout.widget.PercentRelativeLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/users_list"
+    <Button
+        android:id="@+id/retrofit2_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:onClick="retrofit2Click"
+        android:text="@string/retrofit2"
+        android:textSize="30sp" />
 
+    <Button
+        android:id="@+id/rxjava_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:onClick="rxjavaClick"
+        android:text="@string/rxjava"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/db_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:onClick="dataBindingClick"
+        android:text="@string/data_binding"
+        android:textSize="30sp" />
 </LinearLayout>
