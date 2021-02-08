@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainView {
+public class MainView<T extends BaseActivity> {
 
     @BindView(R.id.user_edit_text)
     EditText userEditText;
@@ -30,7 +30,7 @@ public class MainView {
 
     private final OnMainViewActions onMainViewActions;
 
-    public MainView(WeakReference<MainActivity> mainActivityWeakReference, OnMainViewActions onMainViewActions) {
+    public MainView(WeakReference<T> mainActivityWeakReference, OnMainViewActions onMainViewActions) {
         ButterKnife.bind(this, mainActivityWeakReference.get());
         this.onMainViewActions = onMainViewActions;
     }
