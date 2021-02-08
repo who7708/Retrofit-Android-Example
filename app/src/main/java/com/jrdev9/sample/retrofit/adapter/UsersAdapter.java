@@ -60,7 +60,7 @@ public class UsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         this.users = users;
     }
 
-    public class UserHolder extends RecyclerView.ViewHolder {
+    public static class UserHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.id_text)
         TextView idText;
         @BindView(R.id.nick_text)
