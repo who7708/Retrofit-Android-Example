@@ -1,45 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/test_demo_tv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".main.MainActivity2">
-
-
-    <TextView
-        android:id="@+id/test_tv"
-        android:layout_width="match_parent"
-        android:layout_height="40sp"
-        android:text="@string/async_info" />
-
-    <Button
-        android:id="@+id/test_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
-
-    <Button
-        android:id="@+id/test_btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/click_to_load" />
-
-    <RelativeLayout
-        android:id="@+id/test_ly"
-        android:layout_width="300dp"
-        android:layout_height="300dp">
-
-        <!--<TextView-->
-        <!--    android:id="@+id/test_demo_tv"-->
-        <!--    android:layout_width="match_parent"-->
-        <!--    android:layout_height="match_parent"-->
-        <!--    android:layout_gravity="center"-->
-        <!--    android:background="#ff750c"-->
-        <!--    android:gravity="center"-->
-        <!--    android:text="Hello , world !" />-->
-    </RelativeLayout>
-
-
-</LinearLayout>
+    android:layout_gravity="center"
+    android:background="#ff750c"
+    android:gravity="center"
+    android:text="Hello , world !" />
